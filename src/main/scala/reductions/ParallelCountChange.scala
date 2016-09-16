@@ -46,7 +46,8 @@ object ParallelCountChange {
    *  coins for the specified amount of money.
    */
   def countChange(money: Int, coins: List[Int]): Int = {
-    if (money <= 0) 0
+    if (money < 0) 0
+    else if (money == 0) 1
     else {
       ???
     }
