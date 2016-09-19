@@ -77,12 +77,11 @@ object ParallelCountChange {
 
   /** Threshold heuristic based on the starting money. */
   def moneyThreshold(startingMoney: Int): Threshold =
-    (currentMoney: Int, coins: List[Int]) =>  (startingMoney * 2) / 3 <= currentMoney
+    (currentMoney: Int, coins: List[Int]) =>  (startingMoney * 2) / 3 >= currentMoney
 
   /** Threshold heuristic based on the total number of initial coins. */
   def totalCoinsThreshold(totalCoins: Int): Threshold =
-    ???
-
+    (currentMoney: Int, coins: List[Int]) => (totalCoins * 2) / 3 >= coins.size
 
   /** Threshold heuristic based on the starting money and the initial list of coins. */
   def combinedThreshold(startingMoney: Int, allCoins: List[Int]): Threshold = {
