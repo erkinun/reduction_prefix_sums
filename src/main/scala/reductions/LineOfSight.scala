@@ -34,7 +34,19 @@ object LineOfSight {
   def max(a: Float, b: Float): Float = if (a > b) a else b
 
   def lineOfSight(input: Array[Float], output: Array[Float]): Unit = {
-    ???
+    var idx = 1
+    var maxAngle = 0f
+    while (idx < input.length) {
+      val curAngle = input(idx) / idx
+
+      if (curAngle > maxAngle) {
+        maxAngle = curAngle
+        output(idx) = maxAngle
+      }
+      else output(idx) = maxAngle
+
+      idx = idx + 1
+    }
   }
 
   sealed abstract class Tree {
@@ -50,7 +62,16 @@ object LineOfSight {
   /** Traverses the specified part of the array and returns the maximum angle.
    */
   def upsweepSequential(input: Array[Float], from: Int, until: Int): Float = {
-    ???
+    var localMax = 0f
+    var idx = from
+    while (idx < until) {
+      val angle = input(idx) / idx
+
+      if (angle > localMax) localMax = angle
+      idx = idx + 1
+    }
+
+    localMax
   }
 
   /** Traverses the part of the array starting at `from` and until `end`, and
